@@ -1,7 +1,7 @@
 const {expect, test} = require('@oclif/test')
 const cmd = require('..')
 
-describe('now-purge', () => {
+describe('now-detox', () => {
   test
   .stdout()
   .do(() => cmd.run([]))

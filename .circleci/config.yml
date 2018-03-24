@@ -32,7 +32,7 @@ jobs:
 
 workflows:
   version: 2
-  "now-purge":
+  "now-detox":
     jobs:
       - node-latest
       - node-8

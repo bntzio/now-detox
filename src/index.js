@@ -2,9 +2,9 @@ const {Command, flags} = require('@oclif/command')
 
 const { getDeployments } = require('./api/now')
 
-class NowPurgeCommand extends Command {
+class NowDetoxCommand extends Command {
   async run () {
-    const { flags } = this.parse(NowPurgeCommand)
+    const { flags } = this.parse(NowDetoxCommand)
     const token = process.env.NOW_TOKEN || flags.token
 
     if (!token) {
@@ -21,7 +21,7 @@ class NowPurgeCommand extends Command {
     }).catch((error) => {
       if (error) {
         this.log('Oops! 🙈 There was an error!')
-        this.log('Please submit an issue at https://github.com/bntzio/now-purge/issues 🐛')
+        this.log('Please submit an issue at https://github.com/bntzio/now-detox/issues 🐛')
         this.log('')
         this.log(`Error: ${error}`)
       }
@@ -29,20 +29,20 @@ class NowPurgeCommand extends Command {
   }
 }
 
-NowPurgeCommand.description = `
-now-purge removes all your now deployment instances with a single command 👉🔘
+NowDetoxCommand.description = `
+Remove staled, unaliased or toxic now deployments
 
 Instructions:
 1. Get a zeit now token at https://zeit.co/account/tokens
 2. Set your token as NOW_TOKEN in your shell or just export it
-3. Run now-purge! 👉 now-purge
+3. Run now-detox! 👉 now-detox
 4. Enjoy! 🎉
 `
 
-NowPurgeCommand.flags = {
+NowDetoxCommand.flags = {
   version: flags.version({ char: 'v' }),
   help: flags.help({ char: 'h' }),
   token: flags.string({ char: 't', description: 'pass zeit now token' })
 }
 
-module.exports = NowPurgeCommand
+module.exports = NowDetoxCommand
