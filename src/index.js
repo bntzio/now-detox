@@ -20,10 +20,11 @@ class NowDetoxCommand extends Command {
       })
     }).catch((error) => {
       if (error) {
+        const { statusCode } = error
+        const { message } = JSON.parse(error.error).error
         this.log('Oops! 🙈 There was an error!')
         this.log('Please submit an issue at https://github.com/bntzio/now-detox/issues 🐛')
-        this.log('')
-        this.log(`Error: ${error}`)
+        this.log(`Error ${statusCode}: ${message}`)
       }
     })
   }
